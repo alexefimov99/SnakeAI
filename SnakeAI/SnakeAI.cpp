@@ -74,17 +74,17 @@ void Draw()
 
 void Input()
 {
-	if (x > foodX)
+	if (x > foodX && dir !=RIGHT)
 		dir = LEFT;
-	else if (x < foodX)
+	else if (x < foodX && dir != LEFT)
 		dir = RIGHT;
-	else if (y > foodY)
+	else if (y > foodY && dir != DOWN)
 		dir = UP;
-	else if (y < foodY)
+	else if (y < foodY && dir !=UP)
 		dir = DOWN;
 	else
 	{
-		if (x == 1 && 1 < y < height - 2)
+		if (x == 1 && 1 < y < height - 1)
 		{
 			if (dir == LEFT && y < height / 2)
 				dir = DOWN;
@@ -102,7 +102,7 @@ void Input()
 			else if (dir == LEFT || RIGHT)
 				dir = DOWN;
 		}
-		else if (x == width && 1 < y < height - 2)
+		else if (x == width && 1 < y < height - 1)
 		{
 			if (dir == RIGHT && y < height / 2)
 				dir = DOWN;
@@ -120,122 +120,18 @@ void Input()
 			else if (dir == LEFT || RIGHT)
 				dir = UP;
 		}
-	}
-	/*{
-		if (x == 1 && y < height / 2)
-			dir = DOWN;
-		else if (x == 1 && y >= height / 2)
-			dir = UP;
-		else if (y == 1 && x < width / 2)
-			dir = RIGHT;
-		else if (y == 1 && x >= width / 2)
-			dir = LEFT;
-	}*/
-	
-
-	/*if (y > foodY && dir != DOWN && y > 1)
-	{
-		dir = UP;
-	}
-	else if (x < foodX && dir != LEFT && x < width)
-	{
-		dir = RIGHT;
-	}
-	else if (y < foodY && dir != UP && y < height)
-	{
-		dir = DOWN;
-	}
-	else if (x > foodX && dir != RIGHT && x > 1)
-	{
-		dir = LEFT;
-	}
-
-	if (x == 2 && y < height / 2)
-		dir = DOWN;
-	else if (x == 2 && y >= height / 2)
-		dir = UP;
-
-	if (x == width - 1 && y < height / 2)
-		dir = DOWN;
-	else if (x == width - 1 && y >= height / 2)
-		dir = UP;
-
-	if (y == 2 && x < width / 2)
-		dir = RIGHT;
-	else if (y == 2 && x >= width / 2)
-		dir = LEFT;
-
-	if (y == height - 1 && x < width / 2)
-		dir = RIGHT;
-	else if (y == height - 1 && x >= width / 2)
-		dir = LEFT;*/
-
-	/*if (y > foodY && dir != DOWN && y >= 2)
-	{
-		dir = UP;
-		if (x == foodX && y == foodY || y == 2 && x == 2)
-			dir = RIGHT;
-		else if (x == foodX && y == foodY || y == 2 && x == width - 1)
-			dir = LEFT;
-	}
-	else if (x < foodX && dir != LEFT && x <= width - 1)
-	{
-		dir = RIGHT;
-		if (x == foodX && y == foodY || x == width - 1 && y == height - 1)
-			dir = UP;
-		else if (x == foodX && y == foodY || x == width - 1 && y == 2)
-			dir = DOWN;
-	}
-	else if (y < foodY && dir != UP && y <= height - 1)
-	{
-		dir = DOWN;
-		if (x == foodX && y == foodY || y == height - 1 && x == 2)
-			dir = RIGHT;
-		else if (x == foodX && y == foodY || y == height - 1 && x == width - 1)
-			dir = LEFT;
-	}
-	else if (x > foodX && dir != RIGHT && x >= 2)
-	{
-		dir = LEFT;
-		if (x == foodX && y == foodY || x == 2 && y == 2)
-			dir = DOWN;
-		else if (x == foodX && y == foodY || x == 2 && y == height - 1)
-			dir = UP;
-	}*/
-	
-	/*if (_kbhit())
-		switch (toupper(_getch()))
+		else
 		{
-		case'A':
-			if (dir == RIGHT)
-				dir = RIGHT;
-			else
-				dir = LEFT;
-			break;
-		case'W':
-			if (dir == DOWN)
-				dir = DOWN;
-			else
+			if (y > height / 2 && dir != DOWN)
 				dir = UP;
-			break;
-		case'D':
-			if (dir == LEFT)
-				dir = LEFT;
-			else
-				dir = RIGHT;
-			break;
-		case'S':
-			if (dir == UP)
-				dir = UP;
-			else
+			else if (y <= height / 2 && dir != UP)
 				dir = DOWN;
-			break;
-		case'Q':
-			GameOver = true;
-			break;
-		default:
-			break;
-		}*/
+			else if (x > width / 2 && dir != RIGHT)
+				dir = LEFT;
+			else if (x <= width / 2 && dir != LEFT)
+				dir = RIGHT;
+		}
+	}
 }
 
 void Logic()
